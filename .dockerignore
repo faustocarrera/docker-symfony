@@ -1,0 +1,11 @@
+.buildpath
+.dockerignore
+.git
+.gitignore
+.project
+.settings
+composer.lock
+Dockerfile
+LICENSE
+README.md
+vendor/*
