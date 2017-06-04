@@ -5,7 +5,7 @@ use Symfony\Component\Routing\Route;
 $collection = new RouteCollection();
 
 $collection->add('home', new Route('/', [
-    '_controller' => 'AppBundle:DefaultController:index',
+    '_controller' => 'AppBundle:Default:index',
 ]));
 $collection->add('index', new Route('/lucky', [
     '_controller' => 'AppBundle:Luckynumber:index',

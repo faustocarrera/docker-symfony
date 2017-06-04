@@ -21,8 +21,8 @@ RUN echo "date.timezone = \"UTC\"" >> /etc/php/7.0/cli/php.ini
 RUN echo "" >> /etc/nginx/nginx.conf
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
-COPY docker/supervisor.conf /etc/supervisor/conf.d/supervisor.conf
-COPY docker/vhost.conf /etc/nginx/sites-available/default
+COPY docker-config/supervisor.conf /etc/supervisor/conf.d/supervisor.conf
+COPY docker-config/vhost.conf /etc/nginx/sites-available/default
 RUN mkdir -p /run/php && touch /var/run/php-fpm.sock && touch /run/php/php7.0-fpm.sock
 RUN usermod -u 1000 www-data
 
