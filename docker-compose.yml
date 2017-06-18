@@ -1,24 +1,17 @@
 version: '2'
 services:
-    web:
-      container_name: "symfony-web"
-      build: .
-      image: faustocarrera/symfony
-      ports:
-        - "80:8080"
-      volumes:
-        - .:/var/www
-      networks:
-        - symfony-net
-    postgres:
-      container_name: "symfony-db"
-      image: postgres
-      environment:
-        POSTGRES_USER: "symfony"
-        POSTGRES_PASSWORD: "asdf1234"
-        POSTGRES_DB: "symfony"
-      networks:
-        - symfony-net
-networks:
-  symfony-net:
-    driver: bridge
+  nginx:
+    build: docker/nginx
+    container_name: symfony_nginx
+    volumes:
+      - ./source:/app
+    ports:
+      - "8080:80"
+    links:
+      - php
+  php:
+    build: docker/php
+    container_name: symfony_php
+    volumes:
+      - ./source:/app
+    working_dir: /app
