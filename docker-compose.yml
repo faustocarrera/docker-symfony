@@ -4,7 +4,7 @@ services:
     build: docker/nginx
     container_name: symfony_nginx
     volumes:
-      - ./source:/app
+      - ./symfony:/app
     ports:
       - "8080:80"
     links:
@@ -13,5 +13,5 @@ services:
     build: docker/php
     container_name: symfony_php
     volumes:
-      - ./source:/app
+      - ./symfony:/app
     working_dir: /app
