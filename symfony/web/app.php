@@ -6,7 +6,13 @@ use Symfony\Component\HttpFoundation\Request;
 $loader = require __DIR__.'/../app/autoload.php';
 include_once __DIR__.'/../app/bootstrap.php.cache';
 
-$kernel = new AppKernel('prod', false);
+$env = 'prod';
+$debug = false;
+if (getenv('SYMFONY_ENV') == 'dev') {
+    $env = 'dev';
+    $debug = true;
+}
+$kernel = new AppKernel($env, $debug);
 $kernel->loadClassCache();
 //$kernel = new AppCache($kernel);
 

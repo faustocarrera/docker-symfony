@@ -3,6 +3,8 @@ services:
   nginx:
     build: docker/nginx
     container_name: symfony_nginx
+    environment:
+      - SYMFONY_ENV=dev
     volumes:
       - ./symfony:/app
     ports:
@@ -12,6 +14,8 @@ services:
   php:
     build: docker/php
     container_name: symfony_php
+    environment:
+      - SYMFONY_ENV=dev
     volumes:
       - ./symfony:/app
     working_dir: /app
